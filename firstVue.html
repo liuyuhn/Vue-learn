@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="app"> <!-- id为app的div标签 -->
+	  {{ message }} <!-- 声明一个message变量，左右大括号是一种常见的文本插值的方式 -->
+	</div><!-- 视图 -->
+	
+	<script type="text/javascript"> //13-21行使用JavaScript脚本包裹一段js
+	var app = new Vue({ //引入vue.js时会声明一个全局变量，名字为vue,
+	                    //通过new vue的方式获得一个vue的应用，会返回一对象，
+						//这个对象被称之为应用对象或者vue.js的对象
+						//这个对象有两个重要的属性为el和data
+						//el为element即元素，使用id选择器的方式选中上面的div
+						//data用于保存数据，在视图中声明的变量走需要在data中注册并进行初始化的赋值
+		el: '#app',
+		data: {
+			message: 'Hello Vue!',
+			name : "Vue"
+		}
+	});
+	</script><!-- 脚本 -->
+
+</body>
+</html>

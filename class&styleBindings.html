@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+	<div 
+	class="test" 
+	v-bind:class="[ isActive ? 'active' : '', isGreen ? 'green' : '']" 
+	style="width:200px; height:200px; text-align:center; line-height:200px;">
+		hi vue
+	</div>
+	<!-- 
+	 11行为普通的class属性，11与12行渲染出来为<div class= “test active green”>
+	 v-bind:class 指令也可以与普通的 class attribute 共存
+	 可以传给 v-bind:class 一个对象(active/green)，以动态地切换 class
+	 以上例子为三元表达式，等同于<div v-bind:class="{ active: isActive }"></div>
+	 active 这个 class 存在与否将取决于数据 property isActive 的 trueo or false
+	 !!!我们也可以在这里绑定一个返回对象的计算属性
+	 我们可以把一个数组传给 v-bind:class!!!-->
+	<div 
+	:style="{color:color1, fontSize:size, background: isRed ? '#FF0000' : ''}">
+		hi vue
+	</div>
+	<!-- 绑定内联样式 
+	 color 为属性 color1 为变量-->
+</div>
+<script type="text/javascript">
+var vm = new Vue({
+	el : "#app",
+	data : {
+		isActive : true,
+		isGreen : true,
+		color1 : "#FFFFFF",
+		size : '50px',
+		isRed : true
+	}
+});
+</script>
+<style>
+.test{font-size:30px;}
+.green{color:#00FF00;}
+.active{background:#FF0000;}
+</style>
+</body>
+</html>
