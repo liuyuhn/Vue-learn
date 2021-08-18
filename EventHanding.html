@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+	<div id="example-1">
+		<!-- 使用v-on监听dom事件并在触发时运行一些javascript代码 -->
+		<button v-on:click="counter += 1"> 数值 :  {{ counter }} </button><br />
+		<!-- 使用v-on指令为button元素绑定click事件 -->
+		<button v-on:click="greet('abc', $event)">Greet</button>
+		<!-- 使用v-on指令为button元素绑定click事件 
+		每当button被点击时会触发greet函数
+		！！！greet函数还可以传递参数，以上代码为实参abc，以及一个特殊的变量event-->
+	</div>
+</div>
+<script type="text/javascript">
+var vm = new Vue({
+	el : "#app",
+	data : {
+		counter: 0,
+		// 在data对象内注册了counter属性默认为0
+		name : "vue"
+	},
+	methods:{
+		// 在methods属性内声明函数及函数体
+		greet : function (str, e) {
+			//声明参数时设置了实参
+			alert(str);//在方法内还可调用data数据
+			console.log(e);
+		}
+	},
+	// methods属性
+});
+</script>
+<style type="text/css">
+
+</style>
+</body>
+</html>

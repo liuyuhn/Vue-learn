@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+	<button-counter title="title1 : " @click="click">
+		<h2>hi...h2</h2>
+	</button-counter>
+	<button-counter title="title2 : "></button-counter>
+</div>
+<script type="text/javascript">
+//通过new vue创建的vue 根实例，把这个组件作为自定义元素来使用。
+Vue.component('button-counter', {
+	//vue.component为全局注册，可以用在其被注册后的任何新创建的vue根实例，也包括其组件树中的所有子组件的模板中。
+	props: ['title'],
+	//Prop 是你可以在组件上注册的一些自定义 attribute。
+	//当一个值传递给一个 prop attribute 的时候，它就变成了那个组件实例的一个 property。
+	data: function () {
+		return {
+		  count: 0
+		}
+	},//data并不直接提供一个对象，而是一个函数，这样每个实例就可单独维护自己的对象。
+	template: '<div><h1>hi...</h1><button v-on:click="clickfun">{{title}} You clicked me {{ count }} times.</button><slot></slot></div>',
+	methods:{
+		clickfun : function () {
+			this.count ++;
+			this.$emit('click', this.count);
+		}
+	}
+})
+var vm = new Vue({
+	el : "#app",
+	data : {
+		
+	},
+	methods:{
+		click : function (e) {
+			console.log(e);
+		}
+	}
+});
+</script>
+<style type="text/css">
+
+</style>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+	<div v-if="type === 'A'">
+	  A
+	  <!-- v-if 指令用于条件性地渲染一块内容。这块内容只会在指令的表达式返回 truthy 值的时候被渲染。
+	   只有两种情况的判定使用 v-if 多种情况下可添加使用 v-else-if -->
+	</div> 
+	<div v-else-if="type === 'B'">
+	  B
+	</div>
+	<div v-else-if="type === 'C'">
+	  C
+	</div>
+	<div v-else>
+	  Not A/B/C
+	</div>
+	<h1 v-show="ok">Hello!</h1>
+	<!-- 不同的是带有 v-show 的元素始终会被渲染并保留在 DOM 中。 -->
+</div>
+<script type="text/javascript">
+var vm = new Vue({
+	el : "#app",
+	data : {
+		type : "B",
+		ok : false
+	}
+});
+</script>
+<style type="text/css">
+
+</style>
+</body>
+</html>
+
+
+<!-- v-if和v-show的区别
+v-if最终的结果才会被渲染在dom里，而v-show是先渲染在dom里再根据ccs进行切换
+！！！当 v-if 与 v-for 一起使用时，v-for 具有比 v-if 更高的优先级。！！！-->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="app">
+	<button-counter></button-counter>
+	<test></test>
+</div>
+<script type="text/javascript">
+//通过vue.component函数我们可以在页面上声明和创建一个vue.js的组件
+Vue.component('button-counter', {
+	//vue.component函数的第一个参数'button-counter'被称为组件名
+	//有两种命名方法——短横线或驼峰法（每个单词首字母大写）
+	props: ['title'],
+	data: function () {
+		return {}
+	},
+	template: '<div><h1>hi...</h1></div>',
+	methods:{
+		
+	}
+})
+//以上为全局注册
+var vm = new Vue({
+	el : "#app",
+	data : {
+		
+	},
+	methods:{
+		clicknow : function (e) {
+			console.log(e);
+		}
+	},
+	//局部注册。在创建vue对象时，在vue函数的一个参数，这个参数是对象形式的
+	//在对象内声明一个components属性
+	components:{
+		test : {
+			//组件的名称为test
+			template:"<h2>h2...</h2>",
+			//使用template属性（模版属性）进行模版的赋值
+			//method也可写在template后
+		}
+	}
+});
+</script>
+<style type="text/css">
+
+</style>
+</body>
+</html>
